@@ -1,4 +1,4 @@
-FROM alpine/git as clone
+FROM alpine/git as gitclone
 ENV APPROOT="/app"
 WORKDIR $APPROOT
 RUN git clone https://github.com/navkkrnair/10-2019-ui-service.git
@@ -6,7 +6,7 @@ RUN git clone https://github.com/navkkrnair/10-2019-ui-service.git
 FROM maven:3.6-jdk-8-alpine as build
 ENV APPROOT="/app"
 WORKDIR $APPROOT
-COPY --from=clone $APPROOT/10-2019-ui-service $APPROOT
+COPY --from=gitclone $APPROOT/10-2019-ui-service $APPROOT
 RUN mvn clean package -DskipTests
 
 
