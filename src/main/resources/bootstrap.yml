@@ -1,0 +1,19 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: ui-service
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  cloud:
+    config:
+      uri:
+      - http://config-server:8888
+ui:
+  config:
+    searchUrl: http://search-service/search
+    bookingUrl: http://booking-service/booking
+    checkinUrl: http://checkin-service/checkin
+      
